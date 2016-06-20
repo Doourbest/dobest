@@ -1,0 +1,47 @@
+{
+    "name": "Dobest/Dobest",
+    "description": "A Simple PHP Framework based on Composer, learn from Laravel.",
+    "keywords": ["framework", "Dobest"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "Dobest/framework": "dev-master",
+        "guzzlehttp/guzzle": "6.2",
+        "illuminate/database": "~5.0",
+        "monolog/monolog": "*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "phpunit/phpunit": "~4.0",
+    },
+    "autoload": {
+        "classmap": [
+        ],
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
