@@ -16,8 +16,6 @@
         "phpunit/phpunit": "~4.0",
     },
     "autoload": {
-        "classmap": [
-        ],
         "psr-4": {
             "app\\": "app/"
         }
