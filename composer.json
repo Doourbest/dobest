@@ -17,6 +17,12 @@
         "phpunit/phpunit": "~4.0"
     },
     "autoload": {
+        "classmap": [
+          "app/http/controllers",
+          "app/http/middlewares",
+          "app/http/models",
+          "services"
+        ],
         "psr-4": {
             "app\\": "app/"
         }

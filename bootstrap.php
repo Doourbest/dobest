@@ -3,7 +3,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 // BASE_PATH
 define('BASE_PATH', __DIR__);
 // VIEW_BASE_PATH
-define('VIEW_BASE_PATH', BASE_PATH.'/app/views/');
+define('VIEW_BASE_PATH', BASE_PATH.'/resources/views/');
 // Autoload
 require BASE_PATH.'/vendor/autoload.php';
 // Log
@@ -27,5 +27,4 @@ $capsule = new Capsule;
 $capsule->addConnection(require BASE_PATH.'/config/database.php');
 $capsule->bootEloquent();
 // View Loader
-class_alias('\dobest\View\View','View');
-?>
+class_alias('\Dobest\View\View','View');
