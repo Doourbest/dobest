@@ -1,6 +1,6 @@
 <?php
 
-use dobest\Routing\Router as Route;
+use Dobest\Routing\Router as Route;
 
 Route::get('/', 'HomeController@home');
 
