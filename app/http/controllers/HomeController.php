@@ -17,7 +17,7 @@ class HomeController extends BaseController {
         echo $error.'<br>';
       }
     }
-    //Log::debug('First Debug Info.');
+    Log::debug('First Debug Info.');
 
     // return View
     return View::make('home')->with('User',User::first())
