@@ -8,7 +8,7 @@ define('VIEW_BASE_PATH', BASE_PATH.'/resources/views/');
 require BASE_PATH.'/vendor/autoload.php';
 // Log
 if (!is_dir(BASE_PATH.'/logs/')) {
-  mkdir(BASE_PATH.'/logs/', 0700);
+    mkdir(BASE_PATH.'/logs/', 0700);
 }
 $monolog = new \Monolog\Logger('system');
 $monolog->pushHandler(new \Monolog\Handler\StreamHandler(BASE_PATH.'/logs/app.log', \Monolog\Logger::ERROR));

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "690b20b2f65ebac7f777fbfc8397311a",
+    "hash": "74d3add7a4b25c553a8bd2fcd36ec969",
     "content-hash": "dda19cddee24144645c771f288b15336",
     "packages": [
         {
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Doourbest/framework.git",
-                "reference": "4356bda6aa3a62990783762cd99bc1755b5e55a6"
+                "reference": "3edc569661c88aeeeda40b9e905efacb25b16629"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/Doourbest/framework/4356bda6aa3a62990783762cd99bc1755b5e55a6.zip",
-                "reference": "4356bda6aa3a62990783762cd99bc1755b5e55a6",
+                "url": "https://packagist.phpcomposer.com/files/Doourbest/framework/3edc569661c88aeeeda40b9e905efacb25b16629.zip",
+                "reference": "3edc569661c88aeeeda40b9e905efacb25b16629",
                 "shasum": ""
             },
             "require": {
@@ -46,7 +46,7 @@
                 }
             ],
             "description": "Framework for Dobest version 1",
-            "time": "2016-06-20 05:48:32"
+            "time": "2016-06-21 06:08:28"
         },
         {
             "name": "doctrine/inflector",
