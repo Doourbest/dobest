@@ -8,7 +8,9 @@
   <div class="article">
     <h1><?php echo $User['id'] ?></h1>
     <div class="content">
-      <?php echo $User['name'] ?>
+      UserName:<?php echo $User['name'] ?>
+      <br/>
+      TimeZone:<?php echo $timeZone ?>
     </div>
   </div>
   <ul class="foobar">
