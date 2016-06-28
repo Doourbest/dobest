@@ -1,0 +1,19 @@
+{% extends "base.twig" %}
+
+{% block title %}***This is a twig template***{% endblock %}
+
+{% block content %}
+  <div class="article">
+    <h1>{{User.id}}</h1>
+    <div class="content">
+      {{User.name}}
+    </div>
+  </div>
+  <ul class="foobar">
+    <li>FooBar bar bar bar</li>
+    <li>
+      {{foo_bar}}
+    </li>
+  </ul>
+{% endblock %}
+
