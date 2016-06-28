@@ -4,6 +4,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 define('BASE_PATH', __DIR__);
 // VIEW_BASE_PATH
 define('VIEW_BASE_PATH', BASE_PATH.'/resources/views/');
+// CACHE_BASE_PATH
+define('CACHE_BASE_PATH', BASE_PATH.'/cache');
 // Autoload
 require BASE_PATH.'/vendor/autoload.php';
 // Log
