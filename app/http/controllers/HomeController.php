@@ -21,7 +21,7 @@ class HomeController extends BaseController {
     //Log::debug('First Debug Info.');
 
     // return View
-    return View::make('home')->with('User',User::first())
+    return View::make('home.php')->with('User',User::first())
                              ->withTitle('dobest :-D')
                               ->withFooBar('foo_bar')
                               ->with('timeZone', Config::get('time_zone'));

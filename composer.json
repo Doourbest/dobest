@@ -41,6 +41,10 @@
         "packagist": {
             "type": "composer",
             "url": "https://packagist.phpcomposer.com"
-        }
-    }
+		},
+		"Dobest/framework": {
+			"url":"https://github.com/Doourbest/framework.git",
+			"type":"git"
+		}
+	}
 }
