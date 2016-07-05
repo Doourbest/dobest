@@ -13,7 +13,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Doourbest/framework.git",
-                "reference": "0f130afb80ac3607ae22f0096c18532f22f28cc1"
+                "reference": "0d44eb16162d09fbb1686f429334ef3adb0f1dc8"
             },
             "require": {
                 "illuminate/view": "*",
@@ -44,7 +44,7 @@
                 }
             ],
             "description": "Framework for Dobest version 1",
-            "time": "2016-07-02 04:25:24"
+            "time": "2016-07-04 06:25:01"
         },
         {
             "name": "doctrine/inflector",

@@ -4,7 +4,7 @@ use Dobest\Routing\Router as Route;
 
 Route::get('/', 'HomeController@home');
 
-Route::any('foo', function() {
+Route::any('/foo', function() {
     echo "Foo!";
 });
 
