@@ -4,7 +4,7 @@ use Dobest\Support\Config;
 /**
 * HomeController
 */
-class HomeController extends BaseController {
+class DemoController extends BaseController {
 
   public function home()
   {
@@ -13,22 +13,25 @@ class HomeController extends BaseController {
         'title' => 'required|numeric|integer|min:3|max:4',
         'email' => 'required|email',
     ]);
-    if ( !$validator->success ) {
-      foreach ($validator->errors as $error) {
-        echo $error.'<br>';
-      }
-    }
+
+    // if ( !$validator->success ) {
+    //   foreach ($validator->errors as $error) {
+    //     echo $error.'<br>';
+    //   }
+    // }
+
     //Log::debug('First Debug Info.');
 
     // return View
-    return View::make('home.php')->with('User',User::first())
-                             ->withTitle('dobest :-D')
-                              ->withFooBar('foo_bar')
-                              ->with('timeZone', Config::get('time_zone'));
+    return View::make('bladedemo')
+        ->with('User',User::first())
+        ->with('errors', $validator->errors)
+        ->withTitle('Demo by dobest team')
+        ->withFooBar('foo_bar')
+        ;
 
     // return String
     //return 'Hello dobest!';
-
     // or you can return Nothing.
   }
 }
