@@ -6,7 +6,7 @@ use Dobest\Support\Config;
 */
 class DemoController extends BaseController {
 
-  public function home()
+  public function view_index()
   {
     $data = ['title'=>'你是谁？?', 'email'=>'xiaojinhua@sailvan.com'];
     $validator = $this->validate($data, [

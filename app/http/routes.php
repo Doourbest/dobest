@@ -7,4 +7,4 @@ use Dobest\Routing\Router as Route;
  */
 include __DIR__ . '/routes_demo.php';
 
-Route::dispatch('View@process');
+View::process(Route::dispatch());
