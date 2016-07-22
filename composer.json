@@ -10,6 +10,8 @@
         "guzzlehttp/guzzle": "6.2",
         "filp/whoops": "*",
         "illuminate/database": "~5.0",
+        "illuminate/config": "^5.2",
+        "vlucas/phpdotenv": "^2.3",
         "monolog/monolog": "*"
     },
     "require-dev": {
