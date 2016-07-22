@@ -17,7 +17,12 @@ class HomeController extends BaseController {
         echo $error.'<br>';
       }
     }
-    //Log::debug('First Debug Info.');
+    $included_files = get_included_files();
+
+    foreach ($included_files as $filename) {
+        echo "$filename\n";
+    }
+    Log::debug('First Debug Info.');
 
     // return View
     return View::make('home')->with('User',User::first())

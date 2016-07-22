@@ -20,6 +20,7 @@ $whoops->register();
 // BASE_URL
 $config = require BASE_PATH.'/config/config.php';
 define('BASE_URL', $config['base_url']);
+Config::initConfig($config);
 // TIME_ZONE
 date_default_timezone_set($config['time_zone']);
 // Eloquent ORM
