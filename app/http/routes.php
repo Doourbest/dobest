@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 
 use Dobest\Routing\Router as Route;
@@ -21,3 +22,15 @@ Route::$error_callback = function() {
 };
 
 Route::dispatch('View@process');
+=======
+<?php
+
+use Dobest\Routing\Router as Route;
+
+/**
+ * @NOTICE 如果您是框架的使用者，生产环境下请注释这行代码
+ */
+include __DIR__ . '/routes_demo.php';
+
+View::process(Route::dispatch());
+>>>>>>> 3b3900c625c325f7e223abbf8deab2e188bbe8d6

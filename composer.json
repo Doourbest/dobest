@@ -10,7 +10,6 @@
         "guzzlehttp/guzzle": "6.2",
         "filp/whoops": "*",
         "illuminate/database": "~5.0",
-        "symfony/http-foundation": "3.1.*",
         "monolog/monolog": "*"
     },
     "require-dev": {
@@ -42,6 +41,10 @@
         "packagist": {
             "type": "composer",
             "url": "https://packagist.phpcomposer.com"
-        }
-    }
+		},
+		"Dobest/framework": {
+			"url":"https://github.com/Doourbest/framework.git",
+			"type":"git"
+		}
+	}
 }

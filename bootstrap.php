@@ -4,6 +4,8 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 define('BASE_PATH', __DIR__);
 // VIEW_BASE_PATH
 define('VIEW_BASE_PATH', BASE_PATH.'/resources/views/');
+// CACHE_BASE_PATH
+define('CACHE_BASE_PATH', BASE_PATH.'/cache');
 // Autoload
 require BASE_PATH.'/vendor/autoload.php';
 // Log
@@ -19,6 +21,8 @@ $whoops->pushHandler(new \Whoops\Handler\PlainTextHandler($monolog));
 $whoops->register();
 // BASE_URL
 $config = require BASE_PATH.'/config/config.php';
+// init config
+\Dobest\Support\Config::initConfig($config);
 define('BASE_URL', $config['base_url']);
 Config::initConfig($config);
 // TIME_ZONE
