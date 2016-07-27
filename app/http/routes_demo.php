@@ -16,7 +16,7 @@ Route::get('/',function() {
 // { 
 
 Route::filter('/(:any)/view/(:any)', function($handler) {
-    // $sso = new Valsun\Sso("Transportsys");
+    // $sso = new Valsun\Sso("dataSearch");
     // if($sso->checkLogin()==false) { // not login
     //     header('Location: ' . $sso->getSsoUrl());
     //     return;
