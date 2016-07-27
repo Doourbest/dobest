@@ -15,9 +15,10 @@ Route::get('/',function() {
 // login filter
 // { 
 
-Route::filter('/(:any)/view(:any)', function($handler) {
-    // if(!isset($_SESSION['user'])) { // not login
-    //     header('Location: /login/openviewLogin');
+Route::filter('/(:any)/view/(:any)', function($handler) {
+    // $sso = new Valsun\Sso("Transportsys");
+    // if($sso->checkLogin()==false) { // not login
+    //     header('Location: ' . $sso->getSsoUrl());
     //     return;
     // }
     $view = $handler();
@@ -27,10 +28,11 @@ Route::filter('/(:any)/view(:any)', function($handler) {
     return $view;
 });
 
-Route::filter('/(:any)/api(:any)', function($handler) {
-    // if(!isset($_SESSION['user'])) { // not login
+Route::filter('/(:any)/api/(:any)', function($handler) {
+    // $sso = new Valsun\Sso("Transportsys");
+    // if($sso->checkLogin()==false) { // not login
     //     echo '{"errCode": -10403, "errMsg":"COMMON_LOGIN_NEEDED"}'; // 未登录公共错误码
-    //     return ;
+    //     return;
     // }
     return $handler();
 });

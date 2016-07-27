@@ -24,7 +24,8 @@ class DemoController extends BaseController {
 
     // return View
     return View::make('bladedemo')
-        ->with('User',User::first())
+        // ->with('User',User::first())
+        ->with('User',['id'=>1,'name'=>'abc'])
         ->with('errors', $validator->errors)
         ->withTitle('Demo by dobest team')
         ->withFooBar('foo_bar')
