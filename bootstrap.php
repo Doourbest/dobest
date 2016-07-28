@@ -24,7 +24,6 @@ $config = require BASE_PATH.'/config/config.php';
 // init config
 \Dobest\Support\Config::initConfig($config);
 define('BASE_URL', $config['base_url']);
-Config::initConfig($config);
 // TIME_ZONE
 date_default_timezone_set($config['time_zone']);
 // Eloquent ORM
