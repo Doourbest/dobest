@@ -29,6 +29,9 @@ date_default_timezone_set($config['time_zone']);
 // Eloquent ORM
 $capsule = new Capsule;
 $capsule->addConnection(require BASE_PATH.'/config/database.php');
+$capsule->setAsGlobal();  // for Db
 $capsule->bootEloquent();
+// DB
+class_alias('Illuminate\Database\Capsule\Manager','DB');
 // View Loader
 class_alias('\Dobest\View\View','View');
