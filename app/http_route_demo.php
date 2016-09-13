@@ -12,33 +12,6 @@ Route::get('/',function() {
     return 'Congratulations! It works! now try visit <a href="demo/view/index">demo/view/index</a>';
 });
 
-// login filter
-// {
-
-Route::filter('/(:all)/view/(:any)', function($handler) {
-    // $sso = new Valsun\Sso("dataSearch");
-    // if($sso->checkLogin()==false) { // not login
-    //     header('Location: ' . $sso->getSsoUrl());
-    //     return;
-    // }
-    $view = $handler();
-    if ( $view instanceof View ) {
-        //$view->with('user', $_SESSION['user']);
-    }
-    return $view;
-});
-
-Route::filter('/(:all)/api/(:any)', function($handler) {
-    // $sso = new Valsun\Sso("Transportsys");
-    // if($sso->checkLogin()==false) { // not login
-    //     echo '{"errCode": -10403, "errMsg":"COMMON_LOGIN_NEEDED"}'; // 未登录公共错误码
-    //     return;
-    // }
-    return $handler();
-});
-
-// }
-
 
 function newController($path) {
     $class = '\\' . implode( '\\',
@@ -49,6 +22,7 @@ function newController($path) {
     return new $class;
 }
 
+
 // 需要登录的前缀
 // api
 // view
@@ -56,15 +30,35 @@ function newController($path) {
 // openview
 
 Route::any('/(:all)/view/(:any)',function($c,$m) {
+
+    // $sso = new Valsun\Sso("dataSearch");
+    // if($sso->checkLogin()==false) { // not login
+    //     header('Location: ' . $sso->getSsoUrl());
+    //     return;
+    // }
+
     $obj = newController($c);
     $method = "view_$m";
-    return $obj->$method();
+    $ret =  $obj->$method();
+
+    if ( $ret instanceof View ) {
+        //$ret->with('user', $_SESSION['user']);
+    }
+    return $ret;
 });
 
 Route::any('/(:all)/api/(:any)',function($c,$m) {
+
+    // $sso = new Valsun\Sso("Transportsys");
+    // if($sso->checkLogin()==false) { // not login
+    //     echo '{"errCode": -10403, "errMsg":"COMMON_LOGIN_NEEDED"}'; // 未登录公共错误码
+    //     return;
+    // }
+
     $obj = newController($c);
     $method = "api_$m";
     return $obj->$method();
+
 });
 
 Route::any('/(:all)/openview/(:any)',function($c,$m) {
