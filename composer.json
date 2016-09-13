@@ -23,17 +23,15 @@
           "app/http/models",
           "services"
         ],
-        "psr-0": {
-          "": [
-			  "app/http/controllers/"
-			  ,"app/http/models/"
-			  ,"app/http/middlewares/"
-			  ,"services/"
-		  ]
-        },
-        "psr-4": {
-            "app\\": "app/"
-        }
+		"psr-4": {
+			"app\\": "app/"
+			, "": [
+				"app/http/controllers/"
+				,"app/http/models/"
+				,"app/http/middlewares/"
+				,"services/"
+			]
+		}
     },
     "autoload-dev": {
         "classmap": [
