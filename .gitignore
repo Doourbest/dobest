@@ -3,4 +3,5 @@
 .env
 tags
 /logs
+/log
 /cache

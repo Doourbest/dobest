@@ -12,8 +12,9 @@ class Log {
   function __construct()
   {
     $this->log = new Logger('local');
-    $this->log->pushHandler(new StreamHandler(BASE_PATH.'/logs/app.log', Logger::DEBUG));
+    $this->log->pushHandler(new StreamHandler(BASE_PATH.'/log/app.log', Logger::DEBUG));
   }
+
   private function process($level, $data)
   {
     if ( is_array($data) || is_object($data) ) {
@@ -24,6 +25,7 @@ class Log {
     $funcName = 'add'.ucfirst($level);
     $this->log->$funcName($data);
   }
+
   public static function __callStatic($method, $parameters)
   {
     if ( !in_array($method, ['debug', 'info', 'notice', 'warning', 'error', 'critical', 'alert', 'emergency']) ) {
@@ -33,4 +35,5 @@ class Log {
       $log->process($method, $parameters);
     }
   }
+
 }

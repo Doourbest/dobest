@@ -18,18 +18,15 @@
     },
     "autoload": {
         "classmap": [
-          "app/http/controllers",
-          "app/http/middlewares",
-          "app/http/models",
-          "services"
+          "app/controller",
+          "app/common",
+          "app/model"
         ],
 		"psr-4": {
-			"app\\": "app/"
-			, "": [
-				"app/http/controllers/"
-				,"app/http/models/"
-				,"app/http/middlewares/"
-				,"services/"
+			"": [
+				"app/controller",
+				"app/common",
+				"app/model"
 			]
 		}
     },
