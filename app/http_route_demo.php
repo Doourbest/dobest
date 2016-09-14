@@ -22,12 +22,12 @@ function newController($path) {
     return new $class;
 }
 
-
 // 需要登录的前缀
 // api
 // view
 // 不需要登录，对外开放的 url 前缀
 // openview
+
 
 Route::any('/(:all)/view/(:any)',function($c,$m) {
 
@@ -41,15 +41,15 @@ Route::any('/(:all)/view/(:any)',function($c,$m) {
     $method = "view_$m";
     $ret =  $obj->$method();
 
-    if ( $ret instanceof View ) {
-        //$ret->with('user', $_SESSION['user']);
-    }
+    // if ( $ret instanceof View ) {
+    //     $ret->with('user', $sso->getUserInfo());
+    // }
     return $ret;
 });
 
 Route::any('/(:all)/api/(:any)',function($c,$m) {
 
-    // $sso = new Valsun\Sso("Transportsys");
+    // $sso = new Valsun\Sso("dataSearch");
     // if($sso->checkLogin()==false) { // not login
     //     echo '{"errCode": -10403, "errMsg":"COMMON_LOGIN_NEEDED"}'; // 未登录公共错误码
     //     return;
