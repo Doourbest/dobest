@@ -14,7 +14,7 @@ Route::get('/',function() {
 
 
 // view 用于返回 html 代码
-// api  用于 ajax 一部请求
+// api  用于 ajax 异步请求
 
 Route::any('/(:all)/view/(:any)',function($c,$m) {
 
