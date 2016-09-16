@@ -13,6 +13,40 @@ Route::get('/',function() {
 });
 
 
+// view 用于返回 html 代码
+// api  用于 ajax 一部请求
+
+Route::any('/(:all)/view/(:any)',function($c,$m) {
+
+    // 这里可以做登录验证
+    // $sso = new Valsun\Sso("dataSearch");
+    // if($sso->checkLogin()==false) { // not login
+    //     header('Location: ' . $sso->getSsoUrl());
+    //     return;
+    // }
+
+    $ret = handleRequest($c,'view',$m);
+
+    // 给视图注入环境变量
+    // if ( $ret instanceof View ) {
+    //     $ret->with('user', $sso->getUserInfo());
+    // }
+
+    return $ret;
+});
+
+Route::any('/(:all)/api/(:any)',function($c,$m) {
+
+    // 这里可以做登录验证
+    // $sso = new Valsun\Sso("dataSearch");
+    // if($sso->checkLogin()==false) { // not login
+    //     echo '{"errCode": -10403, "errMsg":"COMMON_LOGIN_NEEDED"}'; // 未登录公共错误码
+    //     return;
+    // }
+
+    return handleRequest($c,'view',$m);
+});
+
 function handleRequest($classPath,$type,$handler) {
     $class = '\\' . implode( '\\',
         array_map(function($s) {return ucfirst($s);},
@@ -39,43 +73,4 @@ function handleRequest($classPath,$type,$handler) {
         return  $obj->$method();
     } 
 }
-
-// 需要登录的前缀
-// api
-// view
-// 不需要登录，对外开放的 url 前缀
-// openview
-
-
-Route::any('/(:all)/view/(:any)',function($c,$m) {
-
-    // $sso = new Valsun\Sso("dataSearch");
-    // if($sso->checkLogin()==false) { // not login
-    //     header('Location: ' . $sso->getSsoUrl());
-    //     return;
-    // }
-
-    $ret = handleRequest($c,'view',$m);
-
-    // if ( $ret instanceof View ) {
-    //     $ret->with('user', $sso->getUserInfo());
-    // }
-
-    return $ret;
-});
-
-Route::any('/(:all)/api/(:any)',function($c,$m) {
-
-    // $sso = new Valsun\Sso("dataSearch");
-    // if($sso->checkLogin()==false) { // not login
-    //     echo '{"errCode": -10403, "errMsg":"COMMON_LOGIN_NEEDED"}'; // 未登录公共错误码
-    //     return;
-    // }
-
-    return handleRequest($c,'view',$m);
-});
-
-Route::any('/(:all)/openview/(:any)',function($c,$m) {
-    return handleRequest($c);
-});
 
