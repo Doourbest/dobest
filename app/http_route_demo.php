@@ -9,7 +9,7 @@ use Dobest\Routing\Router as Route;
 
 Route::get('/',function() {
     // header('Location: /order/viewIndex');
-    return 'Congratulations! It works! now try visit <a href="demo/view/index">/demo/demo/view/index</a>';
+    return 'Congratulations! It works! now try visit <a href="/demo/view/index">/demo/view/index</a>';
 });
 
 
