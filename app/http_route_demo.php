@@ -13,13 +13,31 @@ Route::get('/',function() {
 });
 
 
-function newController($path) {
+function handleRequest($classPath,$type,$handler) {
     $class = '\\' . implode( '\\',
         array_map(function($s) {return ucfirst($s);},
-            array_filter(explode('/',$path),'strlen')
+            array_filter(explode('/',$classPath),'strlen')
         )
     ) . 'Controller';
-    return new $class;
+
+    $obj = new $class;
+    // interceptors
+    if (method_exists($obj,"onRequest")) {
+        return $obj->onRequest($type,$handler);
+    } 
+    if (method_exists($obj,"on_request")) {
+        return $obj->on_request($type,$handler);
+    } 
+    // view_index
+    $method="{$type}_{$handler}";
+    if (method_exists($obj, $method)) {
+        return $obj->$method();
+    }
+    // viewIndex
+    $method="{$type}".ucfirst($handler);
+    if (method_exists($obj,$method)) {
+        return  $obj->$method();
+    } 
 }
 
 // 需要登录的前缀
@@ -37,13 +55,12 @@ Route::any('/(:all)/view/(:any)',function($c,$m) {
     //     return;
     // }
 
-    $obj = newController($c);
-    $method = "view_$m";
-    $ret =  $obj->$method();
+    $ret = handleRequest($c,'view',$m);
 
     // if ( $ret instanceof View ) {
     //     $ret->with('user', $sso->getUserInfo());
     // }
+
     return $ret;
 });
 
@@ -55,15 +72,10 @@ Route::any('/(:all)/api/(:any)',function($c,$m) {
     //     return;
     // }
 
-    $obj = newController($c);
-    $method = "api_$m";
-    return $obj->$method();
-
+    return handleRequest($c,'view',$m);
 });
 
 Route::any('/(:all)/openview/(:any)',function($c,$m) {
-    $obj = newController($c);
-    $method = "openview_$m";
-    return $obj->$method();
+    return handleRequest($c);
 });
 
