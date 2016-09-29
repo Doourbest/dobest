@@ -32,8 +32,14 @@ define('BASE_URL', $config['base_url']);
 date_default_timezone_set($config['time_zone']);
 // Eloquent ORM
 $capsule = new Capsule;
-$capsule->addConnection(require BASE_PATH.'/config/database.php');
-$capsule->setAsGlobal();  // for Db
+$database = require BASE_PATH.'/config/database.php';
+foreach($database['connections'] as $name => $value) {
+    $capsule->addConnection($value,$name);
+    if($name==$database['default']) {
+        $name = 'default';
+        $capsule->addConnection($value,$name);
+    }   
+}
 $capsule->bootEloquent();
 // DB
 class_alias('Illuminate\Database\Capsule\Manager','DB');
