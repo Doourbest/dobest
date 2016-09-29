@@ -1,4 +1,4 @@
-@extends('bladedemo_layout')
+@extends('demo/layout')
 
 @section('title')
 {{$title}}
@@ -12,10 +12,4 @@
       <br/>
     </div>
   </div>
-  <h3>表单验证结果：</h3>
-  <ul>
-    @foreach ($errors as $error)
-        <li>{{$error}}</li>
-    @endforeach
-  </ul>
 @endsection

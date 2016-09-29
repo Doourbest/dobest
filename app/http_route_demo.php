@@ -9,61 +9,68 @@ use Dobest\Routing\Router as Route;
 
 Route::get('/',function() {
     // header('Location: /order/viewIndex');
-    return 'Congratulations! It works! now try visit <a href="demo/view/index">demo/view/index</a>';
+    return 'Congratulations! It works! now try visit <a href="/demo/view/index">/demo/view/index</a>';
 });
 
 
-function newController($path) {
-    $class = '\\' . implode( '\\',
-        array_map(function($s) {return ucfirst($s);},
-            array_filter(explode('/',$path),'strlen')
-        )
-    ) . 'Controller';
-    return new $class;
-}
-
-
-// 需要登录的前缀
-// api
-// view
-// 不需要登录，对外开放的 url 前缀
-// openview
+// view 用于返回 html 代码
+// api  用于 ajax 异步请求
 
 Route::any('/(:all)/view/(:any)',function($c,$m) {
 
+    // 这里可以做登录验证
     // $sso = new Valsun\Sso("dataSearch");
     // if($sso->checkLogin()==false) { // not login
     //     header('Location: ' . $sso->getSsoUrl());
     //     return;
     // }
 
-    $obj = newController($c);
-    $method = "view_$m";
-    $ret =  $obj->$method();
+    $ret = handleRequest($c,'view',$m);
 
-    if ( $ret instanceof View ) {
-        //$ret->with('user', $_SESSION['user']);
-    }
+    // 给视图注入环境变量
+    // if ( $ret instanceof View ) {
+    //     $ret->with('user', $sso->getUserInfo());
+    // }
+
     return $ret;
 });
 
 Route::any('/(:all)/api/(:any)',function($c,$m) {
 
-    // $sso = new Valsun\Sso("Transportsys");
+    // 这里可以做登录验证
+    // $sso = new Valsun\Sso("dataSearch");
     // if($sso->checkLogin()==false) { // not login
     //     echo '{"errCode": -10403, "errMsg":"COMMON_LOGIN_NEEDED"}'; // 未登录公共错误码
     //     return;
     // }
 
-    $obj = newController($c);
-    $method = "api_$m";
-    return $obj->$method();
-
+    return handleRequest($c,'view',$m);
 });
 
-Route::any('/(:all)/openview/(:any)',function($c,$m) {
-    $obj = newController($c);
-    $method = "openview_$m";
-    return $obj->$method();
-});
+function handleRequest($classPath,$type,$handler) {
+    $class = '\\' . implode( '\\',
+        array_map(function($s) {return ucfirst($s);},
+            array_filter(explode('/',$classPath),'strlen')
+        )
+    ) . 'Controller';
+
+    $obj = new $class;
+    // interceptors
+    if (method_exists($obj,"onRequest")) {
+        return $obj->onRequest($type,$handler);
+    } 
+    if (method_exists($obj,"on_request")) {
+        return $obj->on_request($type,$handler);
+    } 
+    // view_index
+    $method="{$type}_{$handler}";
+    if (method_exists($obj, $method)) {
+        return $obj->$method();
+    }
+    // viewIndex
+    $method="{$type}".ucfirst($handler);
+    if (method_exists($obj,$method)) {
+        return  $obj->$method();
+    } 
+}
 
